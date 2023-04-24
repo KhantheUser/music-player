@@ -1,0 +1,72 @@
+export interface CoOperation {
+    id:number;
+    img : string |String;
+}
+const coOperationArray:CoOperation[] = [
+    {
+        id:1,
+        img:"https://loopcentral.vn/uploads/images/bab01eed08076b4c63183e1423f61435.jpg"
+    },
+    {
+        id:2,
+        img:"https://variety.com/wp-content/uploads/2018/01/social-1200.jpg"
+    },
+    {
+        id:3,
+        img:"https://completemusicupdate.com/wp-content/uploads/2018/11/ingrooves-2018-1250x500.png"
+    },
+    {
+        id:4,
+        img:"https://assets.ayobandung.com/crop/0x0:0x0/750x500/webp/photo/2022/11/09/1328956377.jpeg"
+    },
+    {
+        id:5,
+        img:"https://mcvideomd1fr.keeng.net/playnow/images/channel/avatar/20200818/yQefEBQNmLOMsfILvJ9W5f3b81432ea25.jpg"
+    },
+    {
+        id:6,
+        img:"https://images2.thanhnien.vn/Uploaded/duongntt/2020_08_20/screenshot-2019-09-17-at-002324_DHRZ.png?width=500"
+    },
+    {
+        id:7,
+        img:"https://6.viki.io/image/e67f3c5835e5479f8e65db66d2001515.png?s=900x600&e=t"
+    },
+    {
+        id:8,
+        img:"https://yt3.googleusercontent.com/ytc/AL5GRJVS34rUFlxEiSZKOAXvugtHVKNsbVxWN5-cUvqW=s900-c-k-c0x00ffffff-no-rj"
+    },
+    {
+        id:9,
+        img:"https://th.bing.com/th/id/R.cdce43d78552d3d15508a896386095b1?rik=K7NSuIM19MEhUQ&pid=ImgRaw&r=0"
+    },
+    {
+        id:10,
+        img:"https://www.empireentertainmentaz.com/uploads/b/c6840c23e5c197f7acd1937ee9122b3ea231223f10587e000e1d8718d4c62b90/469172f2-a78a-400c-98e7-29438d24b33b_1651529542.JPG"
+    },
+    {
+        id:11,
+        img:"https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/y10waiz3lhniiq0pakxc"
+    },
+    {
+        id:12,
+        img:"https://user-assets.sxlcdn.com/images/402037/FsS36-sXRie6nMPphQ4GO09af3gD.png?imageMogr2/strip/auto-orient/thumbnail/300x300%3E/format/png"
+    },
+    {
+        id:13,
+        img:"https://trademarks.justia.com/media/image.php?serial=87657466"
+    },
+    {
+        id:14,
+        img:"https://upload.wikimedia.org/wikipedia/commons/b/b7/SMENTERTAINMENT_LOGO.jpg"
+    },
+    {
+        id:15,
+        img:"https://th.bing.com/th/id/R.557e3cc09c58c33382bcdfbd56b29fc9?rik=0k5tURkt08WZ0Q&pid=ImgRaw&r=0"
+    },
+    {
+        id:16,
+        img:"https://th.bing.com/th/id/OIP.WQR5EEUyynMnJ04Aw9EOeQHaFx?pid=ImgDet&rs=1"
+    },
+   
+]
+export default coOperationArray

@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .design-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .transition-base {
+      cursor: pointer;
+      transition: all linear 200ms;
+    }
+    .shadow-base{
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    }
+    .drop-heart{
+        filter: drop-shadow(0 0 4px #c94b4b);
+        cursor: pointer;
+
+    }
+    
+  
+  }
+  @layer components{
+    .modal-base {
+      @apply absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.4)] transition-base z-[2] rounded-md
+ 
+     }
+    .border-play {
+      @apply h-12 w-12 text-white design-center rounded-full border-[1px] border-white
+    }
+    
+  }
+
