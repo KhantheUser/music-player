@@ -312,7 +312,7 @@ export default {
           show: false,
         },
         tooltip: {
-          custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+          custom: function ({ series, seriesIndex, dataPointIndex, w }:{ series:any, seriesIndex:any, dataPointIndex:any, w:any }) {
             var data =
               w.globals.initialSeries[seriesIndex].data[dataPointIndex];
             return `
