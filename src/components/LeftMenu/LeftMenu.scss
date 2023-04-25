@@ -1,14 +1,11 @@
 .leftMenu {
+  display: none;
   width: 240px;
   min-width: 240px;
   z-index: 1;
   height: 100%;
   min-height: 100vh;
-  // background: #221a2db9;
-  // background: rgba(0,0,0,0.5);
-  
-  // background: transparent;
-  // backdrop-filter: blur(10px);
+
   padding: 20px 15px;
   overflow: hidden;
   
@@ -101,6 +98,13 @@
     }
     
     .bacham{display: none;}
+  }
+ 
+}
+@media (min-width :600px) {
+
+  .leftMenu{
+    display: block;
   }
   
 }

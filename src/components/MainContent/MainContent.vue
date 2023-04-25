@@ -8,7 +8,8 @@
     </div>
 </template>
 <script lang="ts">
-import  NavBarVue from '@/components/NavBar/NavBar.vue';
+import { defineAsyncComponent } from 'vue';
+const  NavBarVue = defineAsyncComponent(()=>import('@/components/NavBar/NavBar.vue'));
 
 export default {
   components :{NavBarVue}

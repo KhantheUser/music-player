@@ -16,11 +16,11 @@
         <swiper-slide class=" w-full flex justify-center" v-for="item in data" :key="item.id">
           
               <div class="w-2/3  aspect-square relative">
-                <img class="h-full w-full rounded-full transition-all ease-linear duration-150 " :src="item.img1" alt="" />
+                <img class="h-full w-full rounded-full transition-all ease-linear duration-150 " v-lazy="item.img1" alt="" />
                 <div
                   class="absolute bottom-0 right-0 h-12 w-12 overflow-hidden rounded-full block border-[1px] border-[#33254c]"
                 >
-                  <img :src="item.img2" class="h-full w-full" alt="" />
+                  <img v-lazy="item.img2" class="h-full w-full" alt="" />
                 </div>
               </div>
           

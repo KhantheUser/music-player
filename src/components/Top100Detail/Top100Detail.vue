@@ -31,7 +31,7 @@
           >
             <img
               class="w-[100%] h-1/2 aspect-square rounded-lg"
-              :src="detailData.thumbnailM"
+              v-lazy="detailData.thumbnailM"
               alt=""
             />
             <h2 class="font-semibold text-white text-lg text-center mt-2">
@@ -108,7 +108,7 @@
                
                 <img
                   class="h-full w-full rounded-md"
-                  :src="item.thumbnail"
+                  v-lazy="item.thumbnail"
                   alt=""
                 />
               </div>
@@ -166,7 +166,7 @@
               </div>
               <img
                 class="transition-base group-hover:scale-110 h-full w-full"
-                :src="item.thumbnail"
+                v-lazy="item.thumbnail"
                 alt=""
               />
             </div>
@@ -197,20 +197,19 @@
 </template>
 <script lang="ts">
 import { Autoplay, Navigation } from "swiper";
-import { ContentLoader } from "vue-content-loader";
 
 import { useStore } from "@/store";
 import { SwiperSlide } from "swiper/vue";
 import dayjs from "dayjs";
 import axios from "axios";
-import { computed, ref } from "vue";
+import { computed, defineAsyncComponent, ref } from "vue";
 import LoadingVue from "../customComponents/LoadingVue.vue";
 import { convertTime } from "@/customFunction/index";
 import { useRoute } from "vue-router";
-import MusicBeat from "../customComponents/MusicBeat.vue";
-import SwiperVue from "../customComponents/Swiper.vue";
+const MusicBeat = defineAsyncComponent(()=>import("@/components/customComponents/MusicBeat.vue"));
+const SwiperVue = defineAsyncComponent(()=>import("@/components/customComponents/Swiper.vue"));
+
 import { useRouter } from "vue-router";
-// import {getSong} from '@/customFunction'
 export default {
   components: { LoadingVue, MusicBeat, SwiperVue, SwiperSlide },
   setup() {

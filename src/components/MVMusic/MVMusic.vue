@@ -2,8 +2,10 @@
  
  <div class="flex flex-wrap p-[40px] justify-between" v-if="isLoading1">
   <content-loader v-for="item in 12" :key="item"
-      width="23%" 
+     
       height="30vh"
+      class="md:w-[23%] sm:w-[30%] w-[48%]"
+      
       
       
 
@@ -49,7 +51,7 @@ secondaryColor="rgba(0,0,0,0.1)"
 
               <img
                 class="w-full h-full rounded-md transition-all duration-200 ease-linear"
-                :src="item.thumbnail"
+                v-lazy="item.thumbnail"
                 alt=""
               />
             </div>

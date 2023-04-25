@@ -41,12 +41,14 @@ import {
   LaStar ,
   IoClose ,
   MdDiamondOutlined ,
+  BiVolumeMuteFill ,
   BiInfoCircle ,
   FaRegularUser,FaRegularClock,FaHeart,FaRegularHeart ,FaDownload ,FaStepBackward ,FaStepForward ,FaPause ,FaPlay ,FaForward ,FaBackward ,
-  FaShareAlt ,LaPlayCircle,BiDiscFill ,FcPrevious  ,MdNavigatenext,MdNavigatebefore ,IoRadioOutline,IoRadio ,BiMusicNote,BiVolumeUpFill  ,BiVolumeMuteFill 
+  FaShareAlt ,LaPlayCircle,BiDiscFill ,FcPrevious  ,MdNavigatenext,MdNavigatebefore ,IoRadioOutline,IoRadio ,BiMusicNote,BiVolumeUpFill   
 } from "oh-vue-icons/icons";
 addIcons(
   FaWordpress,
+  BiVolumeMuteFill ,
   BiChevronDown ,
   BiInfoCircle ,
   LaBarsSolid ,
@@ -89,6 +91,6 @@ addIcons(
   RiSettings3Line ,
   IoSettingsOutline,
   FaRegularUser,FaRegularClock,FaHeart ,FaRegularHeart ,FaDownload ,FaStepBackward ,FaStepForward ,FaPause ,FaPlay ,FaForward ,FaBackward ,
-  FaShareAlt ,LaPlayCircle ,BiDiscFill ,FcPrevious ,MdNavigatenext ,MdNavigatebefore ,IoRadioOutline,IoRadio ,BiMusicNote,BiVolumeUpFill ,BiVolumeMuteFill 
+  FaShareAlt ,LaPlayCircle ,BiDiscFill ,FcPrevious ,MdNavigatenext ,MdNavigatebefore ,IoRadioOutline,IoRadio ,BiMusicNote,BiVolumeUpFill  
 );
 export default OhVueIcon;

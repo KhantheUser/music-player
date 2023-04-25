@@ -19,23 +19,23 @@
 @import "@/components/MainContainer/MainContainer.scss";
 </style>
 <script lang="ts">
-import CarouselVue from '../Carousel/CarouselVue.vue';
-import NavBar from '@/components/NavBar/NavBar.vue';
-import AudioList from "@/components/AudioList/AudioList.vue";
+import { defineAsyncComponent, ref } from 'vue';
 
-import ChartVue from "@/components/ChartVue/ChatVue.vue";
+const CarouselVue = defineAsyncComponent(()=>import('@/components/Carousel/CarouselVue.vue')) ;
+const NavBar = defineAsyncComponent(()=>import('@/components/NavBar/NavBar.vue')) ;
 
+const AudioList = defineAsyncComponent(()=>import("@/components/AudioList/AudioList.vue")) ;
 
-import NewsProduct from "@/components/NewsProduct/NewsProduct.vue";
-import ChillHappyPolular from "@/components/ChillHappyPopular/ChillHappyPopular.vue";
+const VuePerSlide = defineAsyncComponent(()=>import("@/components/VueperSlide/VuePerSlide.vue")) ;
+const NewsProduct = defineAsyncComponent(()=>import("@/components/NewsProduct/NewsProduct.vue")) ;
+const ChartVue = defineAsyncComponent(()=>import("@/components/ChartVue/ChatVue.vue")) ;
+const RadioVue = defineAsyncComponent(()=>import("@/components/RadioVue/RadioVue.vue")) ;
+const ArtistNoiBatVue = defineAsyncComponent(()=>import('@/components/ArtistNoiBat/ArtistNoiBat.vue')) ;
+const ChillHappyPolular = defineAsyncComponent(()=>import("@/components/ChillHappyPopular/ChillHappyPopular.vue")) ;
+const CoOperation = defineAsyncComponent(()=>import("@/components/CoOperation/CoOperation.vue")) ;
 import { chillArrayFull,popoularArtist ,top100,albumHot,newBXHArray,radioArray,coOperationArray} from "@/models";
-import VuePerSlide from "../VueperSlide/VuePerSlide.vue";
-import RadioVue from "../RadioVue/RadioVue.vue";
-import CoOperation from "../CoOperation/CoOperation.vue";
 
 import axios from 'axios';
-import { ref } from 'vue';
-import  ArtistNoiBatVue from '../ArtistNoiBat/ArtistNoiBat.vue';
 import AlbumVue from '../AlbumVue/AlbumVue.vue';
 
 export default {

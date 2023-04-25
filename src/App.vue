@@ -59,7 +59,7 @@ export default {
     </main-content>
     <!-- <every-day-music></every-day-music> -->
     <music-player />
-    <div class="background"  :style="{backgroundImage:backgroundTheme.backgroundSrc}"></div>
+    <div class="background "   :style="{backgroundImage:backgroundTheme.backgroundSrc}"></div>
     <modal-m-v />
   </div>
 </template>

@@ -110,7 +110,7 @@ secondaryColor="rgba(0,0,0,0.1)"
                   <img
                   v-if="!isLoading"
                     class="w-full h-full rounded-md "
-                    :src="item.image_music"
+                    v-lazy="item.image_music"
                     alt=""
                   />
                
@@ -184,14 +184,15 @@ secondaryColor="rgba(0,0,0,0.1)"
 <script lang="ts">
 import { ContentLoader } from 'vue-content-loader'
 import { sliceString } from "@/customFunction";
-import MusicBeat from "../customComponents/MusicBeat.vue";
+const MusicBeat = defineAsyncComponent(()=>import('../customComponents/MusicBeat.vue'))
+
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Navigation } from "swiper";
 
 import "swiper/css";
 import "swiper/swiper-bundle.css";
 import { useStore } from "@/store";
-import { computed, ref } from "vue";
+import { computed, defineAsyncComponent, ref } from "vue";
 export default {
   props: {
     data: Object,

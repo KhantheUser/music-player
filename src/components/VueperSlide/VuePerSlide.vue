@@ -33,7 +33,7 @@
                 </span>
                
               </div>
-                <img class="h-full w-full rounded-md" :src="item.img" alt="">
+                <img class="h-full w-full rounded-md" v-lazy="item.img" alt="">
               </div>
             </div>
             <div class="flex flex-col justify-between flex-1 ml-2">

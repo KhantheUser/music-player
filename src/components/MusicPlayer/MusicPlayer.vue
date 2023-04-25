@@ -8,7 +8,7 @@
                     <v-icon name="io-radio" :animation="isPlaying ? 'pulse':''" scale="1.2"/>
                 </span>
                 <div :style="{color:backgroundTheme.playerColorText}" class="h-16 rounded-full w-16  bg-[#130c1c] imageContain relative" :class="{'animate-active':isPlaying}"> 
-                    <img class="rounded-full h-16 w-16"   :src="mainSong?.img" alt="">
+                    <img class="rounded-full h-16 w-16"   v-lazy="mainSong?.img" alt="">
                     <span :class="{iconTest:isPlaying,'hidden':!isPlaying}" class="   absolute -top-5 right-0">
                     <v-icon name="bi-music-note"  scale="1.2"/>
 
@@ -32,9 +32,8 @@
                 </div>
             </div>
             <div class="ml-4 text-[#f1f1f1]  w-full">
-                <span class="block text-[14px] w-[150px]  lg:w-[100%]  font-bold whitespace-nowrap text-ellipsis overflow-hidden" v-if="!isPlaying">{{ mainSong.songName }}</span>
-                <!-- <marquee behavior="" direction=""  v-if="isPlaying===true">{{ mainSong.songName }}</marquee> -->
-                <span class="block text-[14px] w-[150px]  lg:w-[100%]  font-bold whitespace-nowrap text-ellipsis relative  overflow-hidden slideInfi" v-if="isPlaying">{{ mainSong.songName }}</span>
+                <span class="block text-[14px] w-[80%] max-w-[80%] font-bold whitespace-nowrap text-ellipsis overflow-hidden" v-if="!isPlaying">{{ mainSong.songName }}</span>
+                <span class="block text-[14px] w-[80%] max-w-[80%]    font-bold whitespace-nowrap text-ellipsis relative  overflow-hidden slideInfi" v-if="isPlaying">{{ mainSong.songName }}</span>
                 <span class="block text-[12px] text-[#848484]">{{ mainSong.artist }}</span>
             </div>
             <div class="w-7 h-full z-10">
@@ -78,7 +77,7 @@
                         </span>
                     </div>
                     <div class="forward flex items-center">
-                        <span class="design-center  h-10 w-10 rounded-full cursor-pointer " :class="[`hover:bg-[${backgroundTheme.navbarColor}]`]">
+                        <span class="design-center  h-10 w-10 rounded-full cursor-pointer hover:bg-[#2f2739]" >
                             <v-icon name="fa-forward"/>
                         </span>
                         <span class="design-center  h-10 w-10 rounded-full cursor-pointer hover:bg-[#2f2739]">
@@ -100,9 +99,15 @@
         </div>
         
         <div class="w-[5%] md:w-[20%] flex justify-end items-center ">
-            <span class=" block mr-2 p-1 rounded-full cursor-pointer hover:bg-[#2f2739]" :style="{color:backgroundTheme.playerColorText}">
+           <div @click="turnVolume">
+            <span v-if="!muted"  class=" block mr-2 p-1 rounded-full cursor-pointer hover:bg-[#2f2739]" :style="{color:backgroundTheme.playerColorText}">
                 <v-icon name="bi-volume-up-fill" scale="1.2" />
             </span>
+            <span v-if="muted"  class=" block mr-2 p-1 rounded-full cursor-pointer hover:bg-[#2f2739]" :style="{color:backgroundTheme.playerColorText}">
+                <v-icon name="bi-volume-mute-fill" scale="1.2" />
+            </span>
+           </div>
+            
             <input @change="changeVolume($event)" type="range" class="volumeBar hidden md:block">
         </div>
         
@@ -131,7 +136,7 @@
         </div>
         <div class="w-1/2 !max-w-[300px] aspect-square rounded-md  relative overflow-hidden ">
         
-        <img :src="mainSong.img" class="w-full h-full " :class="{'imageBoom':isPlaying}" alt="">
+        <img v-lazy="mainSong.img" class="w-full h-full " :class="{'imageBoom':isPlaying}" alt="">
     </div>
        </div>
     <div class="w-1/2 mt-3">
@@ -186,10 +191,11 @@
   </el-dialog>
 </template>
 <script lang="ts">
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, onMounted, ref, watch } from 'vue'
 import {useStore} from '@/store'
-import RipplePlay from '../customComponents/RipplePlay.vue'
-import MusicBeat from '../customComponents/MusicBeat.vue'
+import { sliceString } from '@/customFunction'
+const RipplePlay =defineAsyncComponent(()=>import('@/components/customComponents/RipplePlay.vue')) 
+const MusicBeat =defineAsyncComponent(()=>import('@/components/customComponents/MusicBeat.vue')) 
 export default {
     
   
@@ -199,16 +205,14 @@ export default {
         
         
         return {
-            isLove:false,        
+            isLove:false,muted:false
         }
     },
     components:{RipplePlay,MusicBeat},
 setup(){
     
     const store = useStore()
-    const changeMusicPlayer = ()=>{
-
-    }
+    
     const backgroundTheme = computed(()=>store.state.backgroundTheme)
     const audio:any = ref({});
     const dialogVisible = ref(false)
@@ -245,7 +249,7 @@ watch(currentTime,()=>{
         store.commit('changePlaying',!store.state.isPlaying)
 
     }
-    return {mainSong,isPlaying,audio,changePlaying,inputRangeValue,timeSet,currentTime,changeRange,dialogVisible,backgroundTheme,test}
+    return {mainSong,isPlaying,audio,changePlaying,inputRangeValue,timeSet,currentTime,changeRange,dialogVisible,backgroundTheme,test,sliceString}
 },
 
 methods :{
@@ -256,9 +260,26 @@ methods :{
    
     
     changeVolume(e:any){
+        if(this.muted){
+            this.muted = false
+            
+        }
         const audioRef:any = this.$refs.audio
         audioRef.volume = e.target.value/100 
 
+    },
+    turnVolume(){
+        const audioRef:any = this.$refs.audio
+        const volumeBar = document.querySelector('.volumeBar') as HTMLInputElement
+        console.log(volumeBar.value)
+        if(!this.muted){
+            audioRef.volume = 0
+            
+        }else {
+            audioRef.volume =  +volumeBar.value/100
+            
+        }
+        this.muted = !this.muted
     }
 }
 }
@@ -277,7 +298,7 @@ methods :{
        right: 100%;
        opacity: 1;
     }to{
-        right: 0;
+        right: -80%;
         opacity: 0;
     }
 }

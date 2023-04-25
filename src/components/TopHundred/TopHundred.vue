@@ -1,8 +1,30 @@
 <template>
  
-    <loading-vue v-if="isLoading"></loading-vue>
+<div class="flex p-[10px] md:p-[30px] flex-wrap justify-between" v-if="isLoading">
+  <content-loader v-for="item in 15" :key="item"
+      class="md:w-[18%] sm:w-[30%] w-[48%]"
+      height="30vh"
+      
+      
+
+:speed="2"
+primaryColor="rgba(255,255,255,0.1)"
+secondaryColor="rgba(0,0,0,0.1)"
+>
+
+
+  <rect  y="0" rx="3" ry="3" width="100%" height="50%" class="aspect-video"  /> 
+
+
+<rect  y="55%" rx="3" ry="3" width="100%" height="20" /> 
+
+
+
+</content-loader>
+
+</div>
  
-  <div class="px-[10px] md:px-[30px] py-[30px] top100">
+  <div class="px-[10px] md:px-[30px] py-[30px] top100 ">
     <div class="" v-for="item in top100" :key="item.title">
       <h2 class="text-white font-bold text-2xl">{{ item.title }}</h2>
 
@@ -33,7 +55,7 @@
                   </div>
             <img
               class="w-full h-full rounded-md"
-              :src="data.thumbnail"
+              v-lazy="data.thumbnail"
               alt=""
             />
           </div>
@@ -63,19 +85,20 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, ref } from "vue";
+import { ContentLoader } from 'vue-content-loader'
+
+import { defineAsyncComponent, reactive, ref } from "vue";
 import axios from "axios";
 import { ElTooltip } from "element-plus";
 import { sliceString } from "@/customFunction";
-import LoadingVue from "../customComponents/LoadingVue.vue";
-import { useStore } from "@/store";
+
+const LoadingVue =defineAsyncComponent(()=>import('@/components/customComponents/LoadingVue.vue'));
 import { useRouter } from "vue-router";
 export default {
-  components: { ElTooltip },
+  components: { ElTooltip ,ContentLoader},
   setup() {
     const router = useRouter();
     let top100: any = reactive([]);
-    const store = useStore();
     let isLoading = ref<boolean>(true);
     const getTop100 = async () => {
       try {
@@ -98,9 +121,7 @@ export default {
           id: encodeId100,
         },
       });
-      // console.log(encodeId100)
-      // store.commit('changePage',tab)
-      // store.commit('changeDetail100',encodeId100)
+     
     };
     return { top100, sliceString, LoadingVue, isLoading, changePageDetail };
   },

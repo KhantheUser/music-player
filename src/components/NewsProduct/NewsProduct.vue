@@ -50,7 +50,7 @@ secondaryColor="rgba(0,0,0,0.1)"
     </template>
     <div class="">
       <div class="flex items-center pb-3 border-b-[1px] border-white">
-        <img :src="item.image_music" class="h-12 aspect-square rounded-md" alt="">
+        <img v-lazy="item.image_music" class="h-12 aspect-square rounded-md" alt="">
         <div class="ml-2 flex-1 flex justify-between items-center">
       <div>
         <tool-tip :content="item.name_music">
@@ -109,7 +109,7 @@ secondaryColor="rgba(0,0,0,0.1)"
 
             <img
               class="h-[62px] aspect-square rounded-sm min-w-[56px]"
-              :src="item.image_music"
+              v-lazy="item.image_music"
               alt=""
             />
           </div>
@@ -165,10 +165,11 @@ secondaryColor="rgba(0,0,0,0.1)"
 import {songArray} from '@/models'
 import {sliceString} from '@/customFunction'
 import axios from 'axios';
-import { computed, ref } from 'vue';
+import { computed, defineAsyncComponent, ref } from 'vue';
 import {useStore} from '@/store'
-import MusicBeat from '../customComponents/MusicBeat.vue';
-import ToolTip from '../customComponents/ToolTip.vue';
+const MusicBeat = defineAsyncComponent(()=>import('@/components/customComponents/MusicBeat.vue'))
+const ToolTip = defineAsyncComponent(()=>import('@/components/customComponents/ToolTip.vue'))
+
 import { ContentLoader } from 'vue-content-loader'
 
 export default {

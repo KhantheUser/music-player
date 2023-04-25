@@ -35,7 +35,7 @@
                 </svg>
                 </a>
                 </div>
-                <img class="h-full w-full rounded-md" :src="item.thumbnailM" alt="">
+                <img class="h-full w-full rounded-md" v-lazy="item.thumbnailM" alt="">
             </div>
             
         </div>
@@ -72,10 +72,10 @@ import "swiper/css";
 import 'swiper/swiper-bundle.css';
 import axios from 'axios';
 import { useRoute,useRouter } from 'vue-router';
-import { computed, ref, watch } from 'vue';
+import { computed, defineAsyncComponent, ref, watch } from 'vue';
 import dayjs from 'dayjs';
 import {convertTime} from '@/customFunction'
-import LoadingVue from '../customComponents/LoadingVue.vue';
+const LoadingVue =defineAsyncComponent(()=>import('@/components/customComponents/LoadingVue.vue')) ;
 export default {
     components: {
       LoadingVue,Swiper,

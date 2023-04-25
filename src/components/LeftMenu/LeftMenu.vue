@@ -1,5 +1,5 @@
 <template>
-  <div class="leftMenu" :style="{background:backgroundTheme.backMenuColor}">
+  <div class="leftMenu " :style="{background:backgroundTheme.backMenuColor}">
     <div class="logoContainer mb-4">
       
 
@@ -16,10 +16,10 @@
   </div>
 </template>
 <script lang="ts">
-import MenuBar from "@/components/MenuBar/MenuBar.vue";
+const MenuBar = defineAsyncComponent(()=>import("@/components/MenuBar/MenuBar.vue")) ;
 import { menuArray } from "@/models/index";
 import {useStore} from '@/store'
-import { computed } from 'vue';
+import { computed, defineAsyncComponent } from 'vue';
 export default {
   components: { MenuBar },
   setup(){

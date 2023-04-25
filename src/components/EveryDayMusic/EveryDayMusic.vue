@@ -25,7 +25,7 @@
                    <music-beat/>
                   </span>
                 </div>
-                <img :src="item.image_music" class="w-full h-full" alt="">
+                <img v-lazy="item.image_music" class="w-full h-full" alt="">
               </div>
               <div class="h-full ml-2 flex justify-between flex-1 items-center">
                 <div class="flex flex-col">
@@ -58,7 +58,7 @@
     </template>
     <div class="">
       <div class="flex items-center pb-3 border-b-[1px] border-white">
-        <img :src="item.image_music" class="h-12 aspect-square rounded-md" alt="">
+        <img v-lazy="item.image_music" class="h-12 aspect-square rounded-md" alt="">
         <div class="ml-2 flex-1 flex justify-between items-center">
       <div>
         <tool-tip :content="item.name_music">
@@ -96,9 +96,7 @@
       </div>
     </div>
   </el-popover>
-                      <!-- <span class="text-white h-8 w-8 design-center rounded-full hover:bg-[rgba(255,255,255,0.2)]">
-                        <v-icon name="fa-ellipsis-h"/>
-                      </span> -->
+                     
                 </div>  
               </div>
             </div>

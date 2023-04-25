@@ -33,12 +33,12 @@
           <div
             class="w-[144px] aspect-square rounded-full overflow-hidden border-white border-[1px]"
           >
-            <img class="w-full h-full" :src="artist.thumbnail" alt="" />
+            <img class="w-full h-full" v-lazy="artist.thumbnail" alt="" />
           </div>
           <div class="sm:ml-8  flex flex-col justify-evenly">
             <h2 class="font-bold md:text-5xl text-lg text-white flex items-center">
               {{ artist.named
-              }}<span><img class="h-10 w-10" :src="check" alt="" /></span>
+              }}<span><img class="h-10 w-10" v-lazy="check" alt="" /></span>
             </h2>
             <div class="flex sm:items-center sm:flex-row flex-col ">
               <span class="text-white font-semibold"
@@ -81,7 +81,7 @@
             >
               <div class="w-[150px] aspect-square overflow-hidden">
                 <img
-                  :src="baiHatNoiBat?.topAlbum?.thumbnail"
+                  v-lazy="baiHatNoiBat?.topAlbum?.thumbnail"
                   class="h-full w-full rounded-md"
                   alt=""
                 />
@@ -132,7 +132,7 @@
                     <music-beat/>
                   </div>
                   <img
-                    :src="item.thumbnail"
+                    v-lazy="item.thumbnail"
                     class="h-full w-full "
                     alt=""
                   />
@@ -204,7 +204,7 @@
                     </div>
                     <img
                       class="transition-all ease-linear duration-200 h-full w-full rounded-lg"
-                      :src="item?.thumbnail"
+                      v-lazy="item?.thumbnail"
                       alt=""
                     />
                   </div>
@@ -255,13 +255,13 @@
                   </div>
                   <img
                     class="transition-all duration-200 ease-linear h-full w-full rounded-md"
-                    :src="item?.thumbnailM"
+                  v-lazy="item?.thumbnailM"
                     alt=""
                   />
                 </div>
                 <div class="mt-2 flex p-2">
                   <img
-                    :src="item?.artist.thumbnail"
+                    v-lazy="item?.artist.thumbnail"
                     class="h-10 w-10 rounded-full"
                     alt=""
                   />
@@ -309,7 +309,7 @@
                     </span>
                   </div>
                   <img
-                    :src="item.thumbnail"
+                    v-lazy="item.thumbnail"
                     class="h-full w-full transition-all ease-linear duration-200"
                     alt=""
                   />

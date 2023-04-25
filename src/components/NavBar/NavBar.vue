@@ -15,7 +15,17 @@
                     <v-icon name="fa-play"/>  
                   </span>
                 </div>
-                <img :src="item.image_music" class="h-full w-full" alt="">
+                <div @click="changePlaying" class="modal-base design-center" v-if="isPlaying && item._id ===songId">
+
+                    <music-beat/>
+                </div>
+                <div @click="changePlaying" class="modal-base design-center" v-if="!isPlaying && item._id ===songId">
+
+<span class="design-center text-white">
+  <v-icon name="fa-play"/>
+</span>
+</div>
+                <img v-lazy="item.image_music" class="h-full w-full" alt="">
               </div>
               <div class="ml-2">
                 <div class="flex flex-col">
@@ -54,24 +64,44 @@
         </button>
         
     </div>
-    <div class="fixed top-[70px] p-4 w-[50vw] bg-purple-secondary h-screen z-[4] transition-all duration-500 ease-linear" :class="{'right-0':activeModalMobile ,'-right-[50vw]':!activeModalMobile}">
-<div class="flex flex-col items-center">
- <span class="text-purple-primary py-3 hover:bg-[#382a45]  rounded-md block w-full transition-base cursor-pointer text-center"> Đăng kí VIP</span>
- <span class="text-purple-primary py-3 hover:bg-[#382a45]  rounded-md block w-full transition-base cursor-pointer text-center">Đổi nền</span>
- <span class="text-purple-primary py-3 hover:bg-[#382a45]  rounded-md block w-full transition-base cursor-pointer text-center">Cài đặt</span>
- <span class="text-purple-primary py-3 hover:bg-[#382a45]  rounded-md block w-full transition-base cursor-pointer text-center">Đăng nhập</span>
+    <div class="fixed top-[70px]  w-[60vw] bg-purple-secondary h-screen z-[4] transition-all duration-500 ease-linear" :class="{'right-0':activeModalMobile ,'-right-[60vw]':!activeModalMobile}">
+<div class="flex flex-col items-center border-b-[1px] border-[rgba(255,255,255,0.1)]">
+ 
+  <div v-for="menuItem in menuArray" @click="changeTab(menuItem.id,menuItem.navigate)" :key="menuItem.id" class="flex items-center w-full tabContain relative" :class="{ active: menuItem.id === indexTab }">
+
+<span class="text-purple-primary mr-5 py-3   rounded-md block w-full transition-base cursor-pointer text-right ">{{ menuItem.name }}</span>
+<span class="text-white mr-5">
+  <v-icon :name="menuItem.icon"/>
+</span>
+</div>
+
+ 
 </div>
     </div>
 </template>
 <script lang="ts">
 import { useStore } from '@/store'
-import { computed, ref } from 'vue'
+import { computed, defineAsyncComponent, ref } from 'vue'
+const MusicBeat = defineAsyncComponent(()=>import('@/components/customComponents/MusicBeat.vue'))
+import {menuArray} from '@/models'
+import {useRouter} from 'vue-router'
 export default {
+  components:{MusicBeat},
   setup(){
   
     const store = useStore()
+    const router = useRouter()
+    const indexTab = ref<number>(1);
+    const activeModalMobile = ref<boolean>(false)
     const backgroundTheme = computed(()=>store.state.backgroundTheme)
     const songs:any = computed(()=>store.state.songs)
+    const isPlaying = computed(()=>store.state.isPlaying)
+    const changePlaying = ()=>{
+      store.commit('changePlaying',!store.state.isPlaying)
+    }
+    const changeModalMobile= ()=>{
+        activeModalMobile.value = !activeModalMobile.value
+      }
     const getSong = (id:string,{img,song,artist,songName}:{img:string,song:string,artist:string,songName:string})=>{
       store.commit('changeSongId',id)
       store.commit('changeSong',{img,song,artist,songName})
@@ -85,25 +115,45 @@ export default {
         return songs?.value.filter((item:{name_music:string})=>item.name_music.toLocaleLowerCase().includes(searchString.value.toLocaleLowerCase()))
       }
     })
-   
-    return {
-      backgroundTheme,filterSongss,searchString,songId,getSong
-    }
-  },
-  data(){
-    return {
-      activeModalMobile : false,
-      // searchString:''
-    }
-  },
-  methods:{
-      changeModalMobile (){
-        this.activeModalMobile = !this.activeModalMobile
+    const changeTab = (inde:number,navigate:string)=>{
+      changeModalMobile()
+      if([5,6,7].includes(inde)){
+        store.commit('changeIsDeveloped',true)
+        setTimeout(()=>{
+          store.commit('changeIsDeveloped',false)
+        },3000)
+      }else {
+        indexTab.value = inde
+        router.push({
+        path:`/${navigate}`
+      })
       }
-  }
+    }
+    return {
+      backgroundTheme,filterSongss,searchString,songId,getSong,isPlaying,changePlaying,menuArray,indexTab,changeTab,activeModalMobile,changeModalMobile
+    }
+  },
+  
+ 
 }
 </script>
 <style lang="scss">
+.tabContain{
+  &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        right: 0;
+        width: 0px;
+        height: 100%;
+        background: linear-gradient(#c94b4b, #4b134f);
+      }
+      &:hover::before,
+      &.active::before {
+        width: 5px;
+        transition: all 0.3s ease;
+      }
+}
 .inputSearch{
   &:focus{
     background: #34224f !important;

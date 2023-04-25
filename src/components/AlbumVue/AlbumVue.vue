@@ -52,7 +52,7 @@
                   <img
                     v-if="!isLoading"
                     class="w-full h-full rounded-md"
-                    :src="item.image"
+                    v-lazy="item.image"
                     alt=""
                   />
                 </div>
@@ -100,14 +100,14 @@
   <script lang="ts">
   import { ContentLoader } from "vue-content-loader";
   import { sliceString } from "@/customFunction";
-  import MusicBeat from "../customComponents/MusicBeat.vue";
+  import { computed, defineAsyncComponent, ref } from "vue";
+const MusicBeat = defineAsyncComponent(()=>import("@/components/customComponents/MusicBeat.vue"));
   import { Swiper, SwiperSlide } from "swiper/vue";
   import { Autoplay, Navigation } from "swiper";
   
   import "swiper/css";
   import "swiper/swiper-bundle.css";
   import { useStore } from "@/store";
-  import { computed, ref } from "vue";
   import {  useRouter } from "vue-router";
   export default {
     props: {

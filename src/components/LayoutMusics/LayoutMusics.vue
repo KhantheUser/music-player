@@ -10,7 +10,7 @@
           >
             <img
               class="h-full w-full rounded-md transition-all duration-200 ease-linear"
-              :src="avatar.thumbnail"
+              v-lazy="avatar.thumbnail"
               alt=""
             />
             <span class="text-[#f1f1f1] absolute top-2 left-2">
@@ -133,7 +133,7 @@
                     </div>
                     <img
                       class="h-12 w-12 rounded-md"
-                      :src="item.thumbnail"
+                      v-lazy="item.thumbnail"
                       alt=""
                     />
                   </div>
@@ -147,7 +147,7 @@
                   </div>
                 </div>
               </div>
-              <div class="flex-[2] hidden sm-550:block  flex items-center">
+              <div class="flex-[2] hidden sm-550:flex   items-center">
                 <span :class="{'text-white':item.encodeId===songId}" class="text-xs font-semibold text-second group-hover:text-white">{{
                   item.album.title
                 }}</span>
@@ -191,9 +191,10 @@
 <script lang="ts">
 import axios from "axios";
 import dayjs from "dayjs";
-import { computed, reactive, ref } from "vue";
+import { computed, defineAsyncComponent, reactive, ref } from "vue";
 import { useStore } from "@/store";
-import MusicBeat from "../customComponents/MusicBeat.vue";
+const MusicBeat = defineAsyncComponent(()=>import('@/components/customComponents/MusicBeat.vue'))
+
 import { ArrowDown } from "@element-plus/icons-vue";
 import LoadingVue from '@/components/customComponents/LoadingVue.vue'
 import { useRouter } from "vue-router";

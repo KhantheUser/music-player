@@ -14,7 +14,7 @@
                                 <v-icon name="fa-play"/>
                             </span>
                         </div>
-                        <img :src="song.imgSrc" alt="" >
+                        <img v-lazy="song.imgSrc" alt="" >
                         <div @click="changePlaying($event)" v-if="isPlaying && songId===song.id" class="absolute top-0 bg-[rgba(0,0,0,0.4)] left-0 design-center h-full w-full">
                             <MusicBeat/>
                         </div>
@@ -63,9 +63,9 @@
 </template>
 <script lang="ts">
 import {songArray} from '@/models'
-import MusicBeat from '../customComponents/MusicBeat.vue'
+const MusicBeat = defineAsyncComponent(()=>import('@/components/customComponents/MusicBeat.vue'))
 import {useStore} from '@/store'
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 export default {
    components :{MusicBeat},
     setup(){

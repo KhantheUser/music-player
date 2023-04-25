@@ -57,7 +57,7 @@ export const store = createStore<Music>({
     },
     backgroundTheme:   {
       id:1,
-      backgroundSrc:'linear-gradient(to right,rgba(23,15,35,0.7),rgba(142,28,135,0.5)), url(https://tophinhanhdep.com/wp-content/uploads/2021/10/Alan-Walker-Wallpapers.jpg)',
+      backgroundSrc:'linear-gradient(to right,rgba(23,15,35,0.7),rgba(142,28,135,0.5)), url(/img/alanbackground.jpg)',
       navbarColor:'linear-gradient(#191125ab,#20192c)',
       backMenuColor:'rgba(35,27,46,0.8)',
       playerColorBack:'#130c1c',

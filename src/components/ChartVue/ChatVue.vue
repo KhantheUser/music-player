@@ -19,7 +19,7 @@
             <div class="awardNumber">
               <img
                 class="h-10 w-10 rounded-md"
-                :src="item.imgNumber"
+                v-lazy="item.imgNumber"
                 alt=""
               />
             </div>
@@ -45,7 +45,7 @@
               </div>
                   <img
                     class="h-full w-full rounded-md"
-                    :src="item.imageSong"
+                    v-lazy="item.imageSong"
                     alt=""
                   />
                 </div>
@@ -97,9 +97,9 @@
 }
 </style>
 <script lang="ts">
-import BarChart from '@/components/BarChart/BarChart.vue'
+const BarChart = defineAsyncComponent(()=>import('@/components/BarChart/BarChart.vue'))
 import {useStore} from '@/store'
-import { computed } from 'vue';
+import { computed, defineAsyncComponent } from 'vue';
 
 
 export default {

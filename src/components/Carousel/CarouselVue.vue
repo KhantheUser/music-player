@@ -13,7 +13,7 @@
                                 <v-icon name="fa-play" scale="1.5"/>
                             </span>
                         </div>
-                    <img :src="item.image" class="h-full w-full" alt="">
+                    <img v-lazy="item.image" class="h-full w-full" alt="">
                 </div>
           </div>
         </swiper-slide>
@@ -21,10 +21,10 @@
  </div>
 </template>
 <script lang="ts">
-import SwiperVue from '../customComponents/Swiper.vue';
+const SwiperVue = defineAsyncComponent(()=>import('../customComponents/Swiper.vue'))
 import { SwiperSlide } from "swiper/vue";
 import { useRouter } from 'vue-router';
-import { ref } from 'vue';
+import { defineAsyncComponent, ref } from 'vue';
 export default {
     components:{SwiperVue,SwiperSlide},
     setup(){
