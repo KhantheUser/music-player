@@ -115,7 +115,7 @@ export default {
           "https://thumbs.dreamstime.com/b/number-one-symbol-neon-sign-vector-first-number-one-template-neon-icon-light-banner-neon-signboard-nightly-bright-advertising-120263446.jpg",
         imageSong:
           "https://avatar-ex-swe.nixcdn.com/song/2023/02/27/2/9/a/2/1677468732364_640.jpg",
-          src:'https://firebasestorage.googleapis.com/v0/b/spotify-55707.appspot.com/o/NGO%C3%80I%2030%20(Lofi%20Ver.)%20-%20TH%C3%81I%20H%E1%BB%8CC%20x%20THAOB%20__%20n%E1%BB%AFa%20th%E1%BA%BF%20gi%E1%BB%9Bi%20em%20d%C3%A0nh%20cho%20m%E1%BB%99t%20ai%20%C4%91%C3%B3%20th%C3%B4i%20(1).mp3?alt=media&token=bcbf0588-c8c4-407d-bb70-3b6e2cedaca3'
+          src:'https://firebasestorage.googleapis.com/v0/b/spotify-2-eddc8.appspot.com/o/NGO%C3%80I%2030%20(Lofi%20Ver.)%20-%20TH%C3%81I%20H%E1%BB%8CC%20x%20THAOB%20__%20n%E1%BB%AFa%20th%E1%BA%BF%20gi%E1%BB%9Bi%20em%20d%C3%A0nh%20cho%20m%E1%BB%99t%20ai%20%C4%91%C3%B3%20th%C3%B4i%20(1).mp3?alt=media&token=4e38dcee-5d2a-417a-87c0-e5d5cac9cc37'
       },
       {
         id: 'xzxz2',
@@ -126,7 +126,7 @@ export default {
           "https://media.istockphoto.com/id/992101022/vector/number-two-symbol-neon-sign-vector-number-two-template-neon-icon-light-banner-neon-signboard.jpg?s=170667a&w=0&k=20&c=KjpNqOERUSMtK_0pRzLJ6MgHrSTzQoqmbSZ6IWHHgnk=",
         imageSong:
           "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/9/c/e/f/9cef213c19ead72f3d7c549e9f66af16.jpg",
-          src:'https://firebasestorage.googleapis.com/v0/b/spotify-55707.appspot.com/o/Ph%E1%BB%91%20Hoa%20L%E1%BB%87%20-%20Chu%20Bin%20x%20%C4%90%C3%B4ng%20Thi%C3%AAn%20%C4%90%E1%BB%A9c%20%5BAUDIO%20OFFICIAL%5D%20_%20Ph%E1%BB%91%20hoa%20l%E1%BB%87%20hoa%20cho%20ng%C6%B0%E1%BB%9Di%20c%C3%B2n%20l%E1%BB%87%20cho%20anh.mp3?alt=media&token=e2a0d9a8-638c-4f6a-aec6-d72719f86da9'
+          src:'https://firebasestorage.googleapis.com/v0/b/spotify-2-eddc8.appspot.com/o/Ph%E1%BB%91%20Hoa%20L%E1%BB%87%20-%20Chu%20Bin%20x%20%C4%90%C3%B4ng%20Thi%C3%AAn%20%C4%90%E1%BB%A9c%20%5BAUDIO%20OFFICIAL%5D%20_%20Ph%E1%BB%91%20hoa%20l%E1%BB%87%20hoa%20cho%20ng%C6%B0%E1%BB%9Di%20c%C3%B2n%20l%E1%BB%87%20cho%20anh.mp3?alt=media&token=b348544f-a428-4464-9e45-32d1d33618d1'
       },
       {
         id: 'xzxz3',
@@ -137,7 +137,7 @@ export default {
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1Jt8afjnFu4tjnVWveNACqp_5IkOzioaBUbfHtfhGL1wnWJRN8guQFQdcN6qFnA3qifg&usqp=CAU",
         imageSong:
           "https://gocdoday.com/wp-content/uploads/2023/02/bat-tinh-yeu-len.jpg",
-          src:'https://firebasestorage.googleapis.com/v0/b/spotify-55707.appspot.com/o/B%E1%BA%ADt%20T%C3%ACnh%20Y%C3%AAu%20L%C3%AAn%20-%20H%C3%B2a%20Minzy%20x%20T%C4%83ng%20Duy%20T%C3%A2n%20_%20MV%20Lyrics.mp3?alt=media&token=8dfe7466-b3a2-4052-9675-9ae38b2030da'
+          src:'https://firebasestorage.googleapis.com/v0/b/spotify-2-eddc8.appspot.com/o/B%E1%BA%ADt%20T%C3%ACnh%20Y%C3%AAu%20L%C3%AAn%20-%20H%C3%B2a%20Minzy%20x%20T%C4%83ng%20Duy%20T%C3%A2n%20_%20MV%20Lyrics.mp3?alt=media&token=8f14610d-6095-415b-8fd0-2a0b5cd578b5'
       },
     ];
     const isPlaying = computed(()=>store.state.isPlaying)
